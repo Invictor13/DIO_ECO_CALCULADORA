@@ -2,7 +2,7 @@
 
 Calculadora estática de emissões de viagens, feita com HTML, CSS e JavaScript puro. A aplicação compara bicicleta, carro, ônibus e caminhão, usando uma base simulada de rotas brasileiras.
 
-**Calculadora publicada:** https://invictor13.github.io/dio-eco-calculadora/
+**Endereço esperado no GitHub Pages:** https://invictor13.github.io/DIO_ECO_CALCULADORA/ (pendente de ativar o Pages nas configurações do repositório).
 
 ## Como usar
 
@@ -46,4 +46,4 @@ Os scripts podem ser verificados no console do navegador por `window.TripCalcula
 
 ## Publicação
 
-O workflow de GitHub Actions publica o conteúdo estático quando há um push para `main`. Em **Settings > Pages**, a origem de build deve estar definida como **GitHub Actions**. A primeira execução pode ser iniciada manualmente na aba **Actions**.
+O workflow de GitHub Actions publica o conteúdo estático quando há um push para `main`. Para ativar o Pages, acesse **Settings > Pages** e escolha **GitHub Actions** como origem de build. O token disponível neste ambiente não tem permissão para criar essa configuração. Depois de habilitá-la, inicie `Deploy static site to GitHub Pages` pela aba **Actions**; o endereço esperado é https://invictor13.github.io/DIO_ECO_CALCULADORA/.
