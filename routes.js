@@ -1,0 +1,25 @@
+(function () {
+  window.RouteData = [
+    { origin: 'São Paulo, SP', destination: 'Rio de Janeiro, RJ', distance: 434 },
+    { origin: 'São Paulo, SP', destination: 'Belo Horizonte, MG', distance: 586 },
+    { origin: 'São Paulo, SP', destination: 'Curitiba, PR', distance: 408 },
+    { origin: 'São Paulo, SP', destination: 'Brasília, DF', distance: 1015 },
+    { origin: 'São Paulo, SP', destination: 'Campinas, SP', distance: 99 },
+    { origin: 'Rio de Janeiro, RJ', destination: 'Belo Horizonte, MG', distance: 443 },
+    { origin: 'Rio de Janeiro, RJ', destination: 'Vitória, ES', distance: 521 },
+    { origin: 'Rio de Janeiro, RJ', destination: 'Curitiba, PR', distance: 852 },
+    { origin: 'Belo Horizonte, MG', destination: 'Brasília, DF', distance: 716 },
+    { origin: 'Belo Horizonte, MG', destination: 'Vitória, ES', distance: 524 },
+    { origin: 'Curitiba, PR', destination: 'Florianópolis, SC', distance: 300 },
+    { origin: 'Curitiba, PR', destination: 'Porto Alegre, RS', distance: 711 },
+    { origin: 'Florianópolis, SC', destination: 'Porto Alegre, RS', distance: 376 },
+    { origin: 'Brasília, DF', destination: 'Goiânia, GO', distance: 209 },
+    { origin: 'Brasília, DF', destination: 'Salvador, BA', distance: 1446 },
+    { origin: 'Salvador, BA', destination: 'Recife, PE', distance: 839 },
+    { origin: 'Salvador, BA', destination: 'Fortaleza, CE', distance: 1190 },
+    { origin: 'Recife, PE', destination: 'Fortaleza, CE', distance: 800 },
+    { origin: 'Manaus, AM', destination: 'Belém, PA', distance: 529 },
+    { origin: 'Belém, PA', destination: 'São Luís, MA', distance: 806 },
+    { origin: 'São Paulo, SP', destination: 'Santos, SP', distance: 77 },
+  ];
+})();

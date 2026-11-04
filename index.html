@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#173a32">
+    <meta name="description" content="Estime as emissões de uma viagem e compare diferentes meios de transporte.">
+    <title>Rota Leve | Calculadora de emissões</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="routes.js"></script>
+    <script defer src="config.js"></script>
+    <script defer src="calculator.js"></script>
+    <script defer src="ui.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Rota Leve, início">
+        <span class="brand__mark" aria-hidden="true">R</span>
+        <span class="brand__name">rota<span>leve</span></span>
+      </a>
+      <span class="topbar__note"><span class="topbar__dot" aria-hidden="true"></span> Calculadora de viagens
+      </span>
+    </header>
+
+    <main id="inicio" class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span> Viaje com mais consciência</p>
+        <h1 id="page-title">Toda rota deixa<br><span>uma marca.</span></h1>
+        <p class="intro__copy">Descubra a emissão da sua viagem, compare alternativas e estime o valor para compensar o impacto.</p>
+      </section>
+
+      <section class="trip-panel" aria-labelledby="trip-title">
+        <div class="trip-panel__heading">
+          <div>
+            <p class="section-kicker">01 / Sua viagem</p>
+            <h2 id="trip-title">De onde até onde?</h2>
+          </div>
+          <span class="trip-panel__unit">Brasil</span>
+        </div>
+
+        <form id="trip-form" class="trip-form">
+          <div class="route-fields">
+            <div class="field">
+              <label class="field__label" for="origin">Origem</label>
+              <div class="field__control">
+                <span class="field__pin field__pin--origin" aria-hidden="true"></span>
+                <input id="origin" name="origin" type="text" list="city-list" placeholder="Ex.: São Paulo, SP" autocomplete="off" required>
+              </div>
+            </div>
+            <div class="route-fields__connector" aria-hidden="true"><span></span></div>
+            <div class="field">
+              <label class="field__label" for="destination">Destino</label>
+              <div class="field__control">
+                <span class="field__pin field__pin--destination" aria-hidden="true"></span>
+                <input id="destination" name="destination" type="text" list="city-list" placeholder="Ex.: Rio de Janeiro, RJ" autocomplete="off" required>
+              </div>
+            </div>
+            <datalist id="city-list"></datalist>
+          </div>
+
+          <div class="route-status" id="route-status" role="status" aria-live="polite">
+            <span class="route-status__icon" aria-hidden="true">i</span>
+            <span>Escolha uma rota para verificar a distância disponível.</span>
+          </div>
+
+          <div class="form-divider"></div>
+
+          <fieldset class="mode-picker">
+            <legend class="field__label">Como você vai?</legend>
+            <div class="mode-picker__options">
+              <label class="mode-option">
+                <input type="radio" name="mode" value="bike">
+                <span class="mode-option__body"><span class="mode-option__icon mode-option__icon--bike" aria-hidden="true">B</span><span class="mode-option__name">Bicicleta</span><span class="mode-option__factor">0 kg/km</span></span>
+              </label>
+              <label class="mode-option">
+                <input type="radio" name="mode" value="car" checked>
+                <span class="mode-option__body"><span class="mode-option__icon mode-option__icon--car" aria-hidden="true">C</span><span class="mode-option__name">Carro</span><span class="mode-option__factor">0,192 kg/km</span></span>
+              </label>
+              <label class="mode-option">
+                <input type="radio" name="mode" value="bus">
+                <span class="mode-option__body"><span class="mode-option__icon mode-option__icon--bus" aria-hidden="true">O</span><span class="mode-option__name">Ônibus</span><span class="mode-option__factor">0,089 kg/km</span></span>
+              </label>
+              <label class="mode-option">
+                <input type="radio" name="mode" value="truck">
+                <span class="mode-option__body"><span class="mode-option__icon mode-option__icon--truck" aria-hidden="true">T</span><span class="mode-option__name">Caminhão</span><span class="mode-option__factor">0,75 kg/km</span></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="form-footer">
+            <div class="distance-field field">
+              <label class="field__label" for="manual-distance">Distância manual <span>(km)</span></label>
+              <input id="manual-distance" name="manualDistance" type="number" min="0.1" step="0.1" placeholder="Se a rota não estiver na base" disabled>
+            </div>
+            <button class="calculate-button" type="submit">
+              <span>Calcular viagem</span><span class="calculate-button__arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+        </form>
+      </section>
+
+      <section id="results" class="results" aria-labelledby="results-title" hidden>
+        <div class="results__heading">
+          <div>
+            <p class="section-kicker">02 / Resultado da viagem</p>
+            <h2 id="results-title">Sua rota, em números.</h2>
+          </div>
+          <span id="distance-source" class="source-tag"></span>
+        </div>
+        <div class="summary-grid">
+          <article class="summary-item summary-item--distance">
+            <span class="summary-item__label">Distância percorrida</span>
+            <p class="summary-item__value"><span id="result-distance">0</span><span class="summary-item__unit">km</span></p>
+            <span id="result-route" class="summary-item__detail"></span>
+          </article>
+          <article class="summary-item summary-item--emissions">
+            <span class="summary-item__label">Emissão estimada <span id="result-mode-label"></span></span>
+            <p class="summary-item__value"><span id="result-emissions">0</span><span class="summary-item__unit">kg CO<sub>2</sub>e</span></p>
+            <span class="summary-item__detail">Para esta viagem, em uma direção</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="comparison" class="comparison" aria-labelledby="comparison-title" hidden>
+        <div class="results__heading">
+          <div>
+            <p class="section-kicker">03 / Comparativo</p>
+            <h2 id="comparison-title">Uma escolha faz diferença.</h2>
+          </div>
+          <span class="comparison__unit">kg CO<sub>2</sub>e por viagem</span>
+        </div>
+        <div id="comparison-list" class="comparison-list" aria-live="polite"></div>
+      </section>
+
+      <section id="credits" class="credits" aria-labelledby="credits-title" hidden>
+        <div class="credits__copy">
+          <p class="section-kicker">04 / Compensação</p>
+          <h2 id="credits-title">Equilibre o que emitiu.</h2>
+          <p>Uma estimativa de créditos de carbono para compensar as emissões desta viagem.</p>
+        </div>
+        <div class="credits__estimate">
+          <div class="credits__figure">
+            <span id="credit-quantity">0</span>
+            <span class="credits__unit">crédito(s) · t CO<sub>2</sub>e</span>
+          </div>
+          <div class="credits__price">
+            <span>Custo estimado</span>
+            <strong id="credit-cost">R$ 0,00</strong>
+          </div>
+          <p class="credits__footnote">Referência: <span id="credit-price-reference"></span> por crédito de 1 t CO<sub>2</sub>e</p>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>ROTA LEVE <span aria-hidden="true">/</span> PROJETO EDUCACIONAL</span>
+        <span>Estimativas simplificadas; emissões reais variam.</span>
+      </footer>
+    </main>
+  </body>
+</html>
