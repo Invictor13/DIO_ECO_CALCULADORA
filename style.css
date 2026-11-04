@@ -41,7 +41,7 @@ input {
 
 .topbar {
   height: 80px;
-  padding: 0 max(28px, calc((100vw - 1180px) / 2));
+  padding: 0 max(32px, calc((100vw - 1280px) / 2));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -98,12 +98,16 @@ input {
 }
 
 .page-shell {
-  width: min(100% - 48px, 1180px);
+  width: min(100% - 64px, 1280px);
   margin: 0 auto;
 }
 
 .intro {
-  padding: 64px 0 38px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  align-items: end;
+  column-gap: 48px;
+  padding: 68px 0 44px;
   animation: rise-in 450ms ease-out both;
 }
 
@@ -118,6 +122,7 @@ input {
 }
 
 .eyebrow {
+  grid-column: 1 / -1;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -130,9 +135,11 @@ input {
 }
 
 .intro h1 {
+  grid-column: 1;
+  grid-row: 2;
   margin: 15px 0 10px;
   font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;
-  font-size: 64px;
+  font-size: 76px;
   font-weight: 600;
   line-height: 1.02;
 }
@@ -142,15 +149,17 @@ input {
 }
 
 .intro__copy {
-  max-width: 510px;
-  margin: 14px 0 0;
+  grid-column: 2;
+  grid-row: 2;
+  max-width: 470px;
+  margin: 0 0 8px;
   color: var(--ink-soft);
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.65;
 }
 
 .trip-panel {
-  padding: 35px 40px 38px;
+  padding: 42px 48px 46px;
   border: 1px solid rgb(220 229 220 / 85%);
   border-radius: 10px;
   background: var(--surface);
@@ -171,7 +180,7 @@ input {
 .credits__copy h2 {
   margin: 7px 0 0;
   font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;
-  font-size: 29px;
+  font-size: 32px;
   font-weight: 600;
   line-height: 1.2;
 }
@@ -204,7 +213,7 @@ input {
   display: block;
   margin-bottom: 9px;
   color: var(--ink-soft);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -220,14 +229,14 @@ input {
 .field__control input,
 .distance-field input {
   width: 100%;
-  height: 56px;
+  height: 62px;
   padding: 0 16px;
   border: 1px solid var(--line);
   border-radius: 5px;
   outline: none;
   background: #fbfcfa;
   color: var(--ink);
-  font-size: 16px;
+  font-size: 18px;
   transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
@@ -266,7 +275,7 @@ input {
 }
 
 .route-fields__connector {
-  height: 56px;
+  height: 62px;
   display: grid;
   place-items: center;
 }
@@ -277,13 +286,13 @@ input {
 }
 
 .route-status {
-  min-height: 40px;
+  min-height: 46px;
   display: flex;
   align-items: center;
   gap: 11px;
   padding-top: 12px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .route-status--found {
@@ -315,7 +324,7 @@ input {
 
 .form-divider {
   height: 1px;
-  margin: 24px 0 25px;
+  margin: 30px 0 30px;
   background: #edf0ec;
 }
 
@@ -329,7 +338,7 @@ input {
 .mode-picker__options {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  gap: 15px;
 }
 
 .mode-option {
@@ -346,13 +355,13 @@ input {
 }
 
 .mode-option__body {
-  min-height: 88px;
+  min-height: 102px;
   display: grid;
-  grid-template-columns: 36px 1fr;
+  grid-template-columns: 42px 1fr;
   grid-template-rows: 1fr 1fr;
   align-items: center;
   column-gap: 11px;
-  padding: 13px 14px;
+  padding: 15px 16px;
   border: 1px solid var(--line);
   border-radius: 5px;
   background: #fff;
@@ -377,15 +386,15 @@ input {
 
 .mode-option__icon {
   grid-row: 1 / 3;
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
   border-radius: 8px 8px 8px 2px;
   background: var(--lime-soft);
   color: var(--leaf);
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
 }
 
@@ -408,7 +417,7 @@ input {
   align-self: end;
   overflow: hidden;
   color: var(--ink);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -417,7 +426,7 @@ input {
 .mode-option__factor {
   align-self: start;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
   white-space: nowrap;
 }
 
@@ -426,11 +435,11 @@ input {
   align-items: end;
   justify-content: space-between;
   gap: 20px;
-  margin-top: 27px;
+  margin-top: 32px;
 }
 
 .distance-field {
-  width: min(100%, 340px);
+  width: min(100%, 400px);
 }
 
 .distance-field input:disabled {
@@ -441,8 +450,8 @@ input {
 }
 
 .calculate-button {
-  min-width: 230px;
-  height: 56px;
+  min-width: 260px;
+  height: 62px;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
@@ -453,7 +462,7 @@ input {
   background: var(--leaf);
   color: white;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   transition: background 160ms ease, transform 160ms ease;
 }
@@ -487,7 +496,7 @@ input {
 .results,
 .comparison,
 .credits {
-  margin-top: 54px;
+  margin-top: 62px;
   animation: rise-in 420ms ease-out both;
 }
 
@@ -525,8 +534,8 @@ input {
 }
 
 .summary-item {
-  min-height: 166px;
-  padding: 24px 28px;
+  min-height: 190px;
+  padding: 30px 34px;
 }
 
 .summary-item + .summary-item {
@@ -543,7 +552,7 @@ input {
 .summary-item__value {
   margin: 13px 0 5px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 42px;
+  font-size: 48px;
   font-weight: 600;
   line-height: 1;
 }
@@ -570,7 +579,7 @@ input {
 
 .comparison-list {
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 
 .comparison-row {
@@ -578,8 +587,8 @@ input {
   grid-template-columns: minmax(110px, 165px) minmax(80px, 1fr) 105px;
   align-items: center;
   gap: 18px;
-  min-height: 62px;
-  padding: 11px 18px;
+  min-height: 70px;
+  padding: 13px 22px;
   border: 1px solid var(--line);
   border-radius: 5px;
   background: white;
@@ -609,7 +618,7 @@ input {
 }
 
 .comparison-row__bar-track {
-  height: 10px;
+  height: 12px;
   overflow: hidden;
   border-radius: 99px;
   background: #edf1ec;
@@ -649,7 +658,7 @@ input {
   grid-template-columns: 1.1fr 0.9fr;
   gap: 36px;
   align-items: center;
-  padding: 32px 36px;
+  padding: 38px 42px;
   border-radius: 7px;
   background: var(--ink);
   color: white;
@@ -722,7 +731,7 @@ input {
   gap: 18px;
   padding: 36px 0 32px;
   color: #73847b;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .page-footer span:first-child {
@@ -746,6 +755,23 @@ input {
   }
 }
 
+@media (max-width: 1120px) {
+  .intro {
+    display: block;
+    padding: 52px 0 36px;
+  }
+
+  .intro h1 {
+    font-size: 64px;
+  }
+
+  .intro__copy {
+    max-width: 560px;
+    margin: 14px 0 0;
+    font-size: 18px;
+  }
+}
+
 @media (max-width: 700px) {
   .topbar {
     height: 70px;
@@ -757,15 +783,32 @@ input {
   }
 
   .intro {
+    display: block;
     padding: 42px 0 28px;
   }
 
   .intro h1 {
-    font-size: 47px;
+    font-size: 50px;
+  }
+
+  .intro__copy {
+    max-width: 510px;
+    margin: 14px 0 0;
+    font-size: 18px;
   }
 
   .trip-panel {
     padding: 26px 22px 25px;
+  }
+
+  .field__control input,
+  .distance-field input {
+    height: 58px;
+    font-size: 17px;
+  }
+
+  .route-fields__connector {
+    height: 58px;
   }
 
   .mode-picker__options {
@@ -813,10 +856,14 @@ input {
     padding: 23px 16px;
   }
 
+  .intro h1 {
+    font-size: 44px;
+  }
+
   .trip-panel__heading h2,
   .results__heading h2,
   .credits__copy h2 {
-    font-size: 24px;
+    font-size: 26px;
   }
 
   .route-fields {
@@ -834,11 +881,11 @@ input {
   }
 
   .mode-option__name {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .mode-option__factor {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .summary-grid {
